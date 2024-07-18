@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const spacegrotesk = Space_Grotesk({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
   title: "次に(tsugini) | FScode",
@@ -16,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex min-h-screen flex-col antialiased scroll-smooth`}>
+      <body
+        className={`${spacegrotesk.className} flex min-h-screen flex-col scroll-smooth bg-[url(/images/bg-main-mobile.png)] bg-contain text-[18px] bg-no-repeat antialiased`}
+      >
         {children}
       </body>
     </html>

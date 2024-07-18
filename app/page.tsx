@@ -1,16 +1,14 @@
-import Image from "next/image";
 import Header from "../components/Header";
-import SandBox from "../components/Sandbox";
-import Footer from "../components/Footer";
+import CardDetailsForm from "../components/CardDetialsForm";
+import { CardProvider } from "@/contexts/CardContext";
 
 export default function Home() {
   return (
-    <>
+    <CardProvider>
       <Header />
-      <main className="flex flex-grow flex-col items-center justify-center p-24">
-        <SandBox />
+      <main className=" ">
+        <CardDetailsForm />
       </main>
-      <Footer />
-    </>
+    </CardProvider>
   );
 }
