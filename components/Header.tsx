@@ -8,7 +8,7 @@ export default function Header() {
     <header className="relative">
       <section className="relative mb-[100px] px-4 pt-8">
         <div className="relative z-10 ml-auto h-[160px] w-[286px] bg-[url(/images/bg-card-back.png)] bg-contain bg-no-repeat">
-          <div className="absolute left-[28px] right-[26px] top-[66px] rounded bg-gray-400 px-3 py-[6px] text-right text-xs text-ic-white">
+          <div className="absolute left-[28px] right-[26px] top-[66px] rounded bg-[#adb5be] px-3 py-[6px] text-right text-xs text-ic-white">
             {cvc ? cvc : "000"}
           </div>
         </div>
