@@ -91,7 +91,10 @@ export default function CardDetailsForm() {
             placeholder="e.g. 1234 5678 9123 0000"
             value={cardDetails.cardNumber}
             onChange={handleCardNumberChange}
-            className="form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet placeholder:text-ic-light-grayish-violet"
+            className={cn(
+              "duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
+              errors.cardNumber ? "border-red-500" : "border-ic-light-grayish-violet",
+            )}
           />
         </div>
         {errors.cardNumber && (
@@ -106,14 +109,20 @@ export default function CardDetailsForm() {
               <input
                 type="text"
                 placeholder="MM"
-                className="form-input w-full rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet placeholder:text-ic-light-grayish-violet"
+            className={cn(
+              "col-span-1 w-full duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
+              errors.expiryMonth && "border-red-500",
+            )}
                 value={cardDetails.expiryMonth}
                 onChange={(e) => setExpiryMonth(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="YY"
-                className="form-input w-full rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet placeholder:text-ic-light-grayish-violet"
+            className={cn(
+              "col-span-1 w-full duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
+              errors.expiryYear && "border-red-500",
+            )}
                 value={cardDetails.expiryYear}
                 onChange={(e) => setExpiryYear(e.target.value)}
               />
@@ -139,7 +148,10 @@ export default function CardDetailsForm() {
               placeholder="e.g. 123"
               value={cardDetails.cvc}
               onChange={(e) => setCvc(e.target.value)}
-              className="form-input w-full rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet placeholder:text-ic-light-grayish-violet"
+            className={cn(
+              "col-span-2 w-full duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
+              errors.cvc && "border-red-500",
+            )}
             />
           </div>
           {errors.cvc && (

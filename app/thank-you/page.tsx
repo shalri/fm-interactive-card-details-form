@@ -1,19 +1,12 @@
 "use client";
+import ThankYou from "@/components/ThankYou";
 import { Suspense } from "react";
-import { useRouter } from "next/navigation";
-export default function ThankYouPage() {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push("/");
-  };
 
+export default function ThankYouPage() {
   return (
     <main>
       <Suspense fallback={<p>Loading...</p>}>
-        Thank you!
-        <button className="" onClick={handleClick}>
-          continue
-        </button>
+        <ThankYou />
       </Suspense>
     </main>
   );
