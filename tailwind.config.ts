@@ -31,6 +31,7 @@ const config: Config = {
         normal: "500",
       },
       screens: {
+        // sm: "768px",
         mobile: "375px",
         desktop: "1440px",
       },
