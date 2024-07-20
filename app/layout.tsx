@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { CardProvider } from "@/contexts/CardContext";
+import Header from "@/components/Header";
 
 const spacegrotesk = Space_Grotesk({ subsets: ["latin"], weight: "500" });
 
@@ -19,7 +21,10 @@ export default function RootLayout({
       <body
         className={`${spacegrotesk.className} flex min-h-screen flex-col scroll-smooth bg-[url(/images/bg-main-mobile.png)] bg-contain text-[18px] bg-no-repeat antialiased`}
       >
+    <CardProvider>
+      <Header />
         {children}
+      </CardProvider>
       </body>
     </html>
   );

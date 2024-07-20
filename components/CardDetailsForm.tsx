@@ -3,8 +3,10 @@ import { useCardContext } from "@/contexts/CardContext";
 import { FormEvent, useState } from "react";
 import { validators } from "@/lib/validators";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function CardDetailsForm() {
+  const router = useRouter();
   const {
     setCardholderName,
     setCardNumber,
@@ -49,7 +51,7 @@ export default function CardDetailsForm() {
 
     const hasErrors = Object.values(newErrors).some((error) => error !== "");
     if (!hasErrors) {
-      console.log("Form submitted successfully");
+      router.push(`/thank-you?name=${cardDetails.cardholderName}`);
     }
   };
 
@@ -71,7 +73,7 @@ export default function CardDetailsForm() {
             value={cardDetails.cardholderName}
             onChange={(e) => setCardholderName(e.target.value)}
             className={cn(
-              "form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet transition-all duration-400",
+              "duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
               errors.cardholderName && "border-red-500",
             )}
           />
