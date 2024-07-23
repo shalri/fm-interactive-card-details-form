@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${spacegrotesk.className} flex min-h-screen flex-col scroll-smooth bg-[url(/images/bg-main-mobile.png)] bg-contain bg-no-repeat text-[18px] antialiased sm:w-full sm:items-center sm:justify-center sm:bg-[url(/images/bg-main-desktop.png)]`}
       >
-        <div className="sm:relative sm:max-w-[1080px] sm:pr-12 sm:mx-auto sm:items-center sm:w-full sm:flex sm:justify-between sm:gap-x-[40px]">
+        <div className="sm:relative sm:mx-auto sm:flex sm:w-full sm:max-w-[1080px] sm:items-center sm:justify-between sm:gap-x-[40px] sm:pr-12 md:flex-col lg:flex-row">
           <CardProvider>
             <Header />
             {children}
