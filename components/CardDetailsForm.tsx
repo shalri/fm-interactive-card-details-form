@@ -58,11 +58,10 @@ export default function CardDetailsForm() {
   const hasErrors = Object.values(errors).some((error) => error !== "");
 
   return (
-    // {/* <section className="flex flex-col items-center justify-center"> */}
-    <section className="mt-[38px] px-6 pb-11">
+    <section className="pt-[38px] px-6 pb-11 sm:max-w-[380px] sm:p-0">
       <form
         onSubmit={handleSubmit}
-        className="w-full space-y-[19px] [&_label]:mb-2 [&_label]:text-[.75rem] [&_label]:uppercase [&_label]:tracking-[0.175em] [&_label]:text-ic-very-dark-violet"
+        className="w-full space-y-[19px] sm:space-y-6 [&_label]:mb-2 [&_label]:text-[.75rem] [&_label]:uppercase [&_label]:tracking-[0.175em] sm:-mt-1 [&_label]:text-ic-very-dark-violet"
       >
         <div className="flex flex-col">
           <label htmlFor="cardholderName">Cardholder Name</label>
@@ -100,7 +99,7 @@ export default function CardDetailsForm() {
         {errors.cardNumber && (
           <span className="text-sm text-red-500">{errors.cardNumber}</span>
         )}
-        <div className="grid grid-cols-4 gap-x-3">
+        <div className="grid grid-cols-4 gap-x-3 sm:pb-[18px]">
           <div className="col-span-2">
             <label htmlFor="expiryMonth" className="nowrap block">
               Exp. Date (mm/yy)
@@ -163,7 +162,7 @@ export default function CardDetailsForm() {
         <button
           type="submit"
           className={cn(
-            "!mt-7 w-full rounded-lg bg-ic-very-dark-violet py-3 text-ic-white",
+            "!mt-7 w-full rounded-lg bg-ic-very-dark-violet py-3 text-ic-white !sm:mt-0",
           )}
         >
           Confirm

@@ -9,7 +9,7 @@ export default function ThankYou() {
   };
 
   return (
-    <section className="mt-[40px] flex w-full flex-col items-center px-6 pb-20">
+    <section className="mt-[40px] flex w-full flex-col items-center px-6 pb-20 sm:max-w-[380px]">
       <div className="size-20 bg-[url(/images/icon-complete.svg)] bg-contain" />
       <h1 className="mt-8 text-[1.85rem] uppercase tracking-widest text-ic-very-dark-violet">
         Thank you!
