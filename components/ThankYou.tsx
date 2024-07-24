@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ThankYou() {
@@ -17,12 +18,13 @@ export default function ThankYou() {
       <p className="mt-2 text-ic-dark-grayish-violet">
         We&apos;ve added your card details
       </p>
-      <button
+      <Link
+        href="/"
         className="mt-12 w-full rounded-lg bg-ic-very-dark-violet py-3 text-ic-white"
         onClick={handleClick}
       >
         Continue
-      </button>
+      </Link>
     </section>
   );
 }
