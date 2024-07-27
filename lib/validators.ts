@@ -28,24 +28,25 @@ export const validators = {
 
   isValidCardholderName(name: string) {
     if (!name) return "Can't be blank";
-    if (!/^[a-zA-Z ]+$/.test(name.trim())) {
+    if (!/^[a-zA-Z ]+$/.test(name.trim()) || name.length < 6) {
       return "Invalid name";
     }
     return "";
   },
 
   isValidExpiryMonth(month: string) {
-    if (!month) return "Can't be blank";
-    const number = Number(month);
-    if (isNaN(number) || number < 1 || number > 12) {
+    if (!month) return "Month can't be blank";
+    const numberInt = parseInt(month, 10);
+    if (isNaN(numberInt) || numberInt < 1 || numberInt > 12) {
       return "Invalid month";
     }
     return "";
   },
 
   isValidExpiryYear(year: string) {
-    if (!year) return "Can't be blank";
-    if (!/^\d{2}$/.test(year)) {
+    if (!year) return "Year can't be blank";
+    const yearInt = parseInt(year, 10)
+    if (!/^\d{2}$/.test(year) || yearInt < 23) {
       return "invalid year";
     }
     return "";
