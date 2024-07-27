@@ -1,6 +1,6 @@
 // utils/validators.ts
 export const validators = {
-  isValidCreditCardNumber(cardNumber: string) {
+  isValidCardNumber(cardNumber: string) {
     if (!cardNumber) return "Can't be blank";
     const cleanedCardNumber = cardNumber.replace(/[^\d]/g, "");
     if (cleanedCardNumber !== cardNumber.replace(/\s+/g, "")) {

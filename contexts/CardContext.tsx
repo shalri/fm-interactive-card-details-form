@@ -7,12 +7,13 @@ interface CardContextProps {
   expiryMonth: string;
   expiryYear: string;
   cvc: string;
+  isConfirmed: boolean;
   setCardholderName: (name: string) => void;
   setExpiryMonth: (month: string) => void;
   setExpiryYear: (year: string) => void;
   setCardNumber: (number: string) => void;
-
   setCvc: (cvc: string) => void;
+  setIsConfirmed: (value: boolean) => void;
 }
 
 const CardContext = createContext<CardContextProps | null>(null);
@@ -23,6 +24,7 @@ export function CardProvider({ children }: { children: ReactNode }) {
   const [expiryMonth, setExpiryMonth] = useState("");
   const [expiryYear, setExpiryYear] = useState("");
   const [cvc, setCvc] = useState("");
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   return (
     <CardContext.Provider
@@ -32,6 +34,8 @@ export function CardProvider({ children }: { children: ReactNode }) {
         expiryMonth,
         expiryYear,
         cvc,
+        isConfirmed,
+        setIsConfirmed,
         setCardholderName,
         setCardNumber,
         setExpiryMonth,

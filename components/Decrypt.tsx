@@ -40,13 +40,13 @@ const DecryptionAnimation: React.FC<DecryptionAnimationProps> = ({
   }, [cardNumber]);
 
   const getRandomChar = () => {
-    // const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const chars = "0123456789";
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    // const chars = "0123456789";
     return chars.charAt(Math.floor(Math.random() * chars.length));
   };
 
   return (
-    <div className="h-[24px] sm:h-[36px]">
+    <div className="h-[27px] sm:h-[36px]">
       <motion.div
         className="text-nowrap tabular-nums tracking-[0.145em] text-ic-white sm:mt-16 sm:text-3xl sm:tracking-[0.095em]"
       >

@@ -1,7 +1,7 @@
 "use client";
 import { useCardContext } from "@/contexts/CardContext";
-import EncryptionAnimation from "@/lib/animations";
 import DecryptionAnimation from "./Decrypt";
+import { m } from "framer-motion";
 
 const mockValues = {
   cardNumber: "0000 0000 0000 0000",
@@ -12,7 +12,7 @@ const mockValues = {
 };
 
 export default function Header() {
-  const { cardNumber, cardholderName, cvc, expiryMonth, expiryYear } =
+  const { isConfirmed, cardNumber, cardholderName, cvc, expiryMonth, expiryYear } =
     useCardContext();
   return (
     <header className="relative sm:-ml-4 sm:h-[558px] sm:py-4">
@@ -24,12 +24,11 @@ export default function Header() {
         </div>
         <div className="absolute z-20 -mt-[66px] h-[160px] w-[286px] bg-[url(/images/bg-card-front.png)] bg-contain bg-no-repeat px-5 py-[18px] sm:relative sm:order-first sm:mt-0 sm:h-[246px] sm:w-[446px] sm:-ml-[92px] sm:px-8 sm:py-7">
           <div className="h-[30px] sm:h-[46px] w-auto bg-[url(/images/card-logo.svg)] bg-contain bg-no-repeat" />
-          {/* <div className="no-wrap mt-9 tabular-nums tracking-[0.145em] sm:text-3xl sm:tracking-[0.095em] sm:mt-16 text-ic-white"> */}
           <div className="relative mt-9 sm:mt-16">
-              <DecryptionAnimation
-              cardNumber={cardNumber ? cardNumber : mockValues.cardNumber}
-            />
-              {/* {cardNumber ? cardNumber : mockValues.cardNumber} */}
+            {isConfirmed ? <DecryptionAnimation
+              cardNumber={cardNumber}
+            /> : <div className="text-nowrap tabular-nums tracking-[0.145em] text-ic-white sm:mt-16 sm:text-3xl sm:tracking-[0.095em]">{cardNumber || mockValues.cardNumber}</div>
+            }
           </div>
           <div className="mt-3 flex sm:mt-6 sm:text-[15px] justify-between text-[10px] text-ic-white">
             <div className="uppercase tracking-[0.075em] sm:tracking-[0.085em]">
@@ -37,7 +36,7 @@ export default function Header() {
             </div>
             <div className="tabular-nums tracking-[0.075em]">
               {expiryMonth ? expiryMonth : mockValues.expiryMonth}/
-            {expiryYear ? expiryYear : mockValues.expiryYear}
+              {expiryYear ? expiryYear : mockValues.expiryYear}
             </div>
           </div>
         </div>
