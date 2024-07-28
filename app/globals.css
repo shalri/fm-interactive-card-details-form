@@ -27,7 +27,7 @@ body::before {
 
 @media (max-width: 767px) {
   body::before {
-    background-image: url("/fm-interactive-card-details-for/images/bg-main-mobile.png");
+    background-image: url("/fm-interactive-card-details-form/images/bg-main-mobile.png");
     max-height: 240px; /* Set the maximum width for the background image */
     width: 100%;
   }
