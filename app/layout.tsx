@@ -7,8 +7,8 @@ import Header from "@/components/Header";
 const spacegrotesk = Space_Grotesk({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
-  title: "次に(tsugini) | FScode",
-  description: "A basic NextJS template for Frontend Mentor Challenges",
+  title: "Interactive Card Details Form | FScode",
+  description: "Solution for the Interactive Card details challenge from Frontend Mentor",
 };
 
 export default function RootLayout({
