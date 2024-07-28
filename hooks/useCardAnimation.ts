@@ -11,10 +11,6 @@ export const useCardAnimation = () => {
   const rotateY = useTransform(x, [-0.5, 0.5], [-20, 20]);
   const rotateX = useTransform(y, [-0.5, 0.5], [20, -20]);
 
-  // Motion values for background position (New)
-  const bgPosX = useTransform(x, [-1, 1], [-20, 20]);
-  const bgPosY = useTransform(y, [-1, 1], [20, -20]);
-
   const bgSize = useTransform([x, y], ([latestX, latestY]) => {
     const scaleX = 1 + (Math.abs(latestX as number) * 0.8);
     const scaleY = 1 + (Math.abs(latestY as number) * 0.8);

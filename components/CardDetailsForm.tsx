@@ -2,7 +2,7 @@
 import { useCardContext } from "@/contexts/CardContext";
 import { FormEvent, useState } from "react";
 import { validators } from "@/lib/validators";
-import { cn } from "@/lib/utils";
+import { cn, numericInput, preventNumericInput } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useFormValidation, Errors } from "@/hooks/useFormValidation";
 import ErrorMessage from "@/animations/ErrorMessage";
@@ -82,6 +82,7 @@ export default function CardDetailsForm() {
               type="text"
               id="cardholderName"
               placeholder="e.g. Jane Appleseed"
+              onKeyPress={preventNumericInput}
               value={cardDetails.cardholderName}
               onChange={(e) => handleChange("cardholderName", e.target.value)}
               className={cn(
@@ -99,6 +100,7 @@ export default function CardDetailsForm() {
               placeholder="e.g. 1234 5678 9123 0000"
               value={cardDetails.cardNumber}
               onChange={handleCardNumberChange}
+              onKeyPress={numericInput}
               className={cn(
                 "duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
                 errors.cardNumber ? "border-red-500" : "border-ic-light-grayish-violet",
@@ -116,6 +118,7 @@ export default function CardDetailsForm() {
                   type="text"
                   placeholder="MM"
                   maxLength={2}
+                  onKeyPress={numericInput}
                   className={cn(
                     "col-span-1 w-full duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
                     errors.expiryMonth && "border-red-500",
@@ -127,6 +130,7 @@ export default function CardDetailsForm() {
                   type="text"
                   placeholder="YY"
                   maxLength={2}
+                  onKeyPress={numericInput}
                   className={cn(
                     "col-span-1 w-full duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
                     errors.expiryYear && "border-red-500",
@@ -137,7 +141,6 @@ export default function CardDetailsForm() {
               </div>
             </div>
             <ErrorMessage error={errors.expiryMonth || errors.expiryYear} key="expiry-error" className="col-span-2 col-start-1 row-start-2" />
-            {/* <ErrorMessage error={errors.expiryYear} key="expiryYear-error" className="col-span-1 col-start-2 row-start-2" /> */}
             <div className="col-span-2">
               <label htmlFor="cvc" className="block">
                 CVC
@@ -147,6 +150,7 @@ export default function CardDetailsForm() {
                 id="cvc"
                 placeholder="e.g. 123"
                 maxLength={3}
+                onKeyPress={numericInput}
                 value={cardDetails.cvc}
                 onChange={(e) => handleChange("cvc", e.target.value)}
                 className={cn(

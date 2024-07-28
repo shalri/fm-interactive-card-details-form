@@ -10,7 +10,7 @@ const mockValues = {
   cardholderName: "Jane Appleseed",
   expiryMonth: "00",
   expiryYear: "23",
-  cvc: "000",
+  cvc: "123",
 };
 
 export default function Header() {
