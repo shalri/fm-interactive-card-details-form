@@ -18,7 +18,7 @@ export default function ThankYou() {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="size-20 bg-[url(/fm-interactive-card-details-form/fm-interactive-card-details-form/images/icon-complete.svg)] bg-contain" />
+          className="size-20 bg-[url(/fm-interactive-card-details-form/images/icon-complete.svg)] bg-contain" />
         <h1 className="mt-8 text-[1.85rem] uppercase tracking-widest text-ic-very-dark-violet">
           Thank you!
         </h1>
