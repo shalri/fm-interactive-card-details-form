@@ -1,8 +1,8 @@
 "use client";
 import { useCardContext } from "@/contexts/CardContext";
-import DecryptionAnimation from "./Decrypt";
-import { m, motion, MotionValue, useMotionValue, useTransform } from "framer-motion";
-import { useEffect } from "react";
+import DecryptionAnimation from "@/animations/Decrypt";
+import { AnimatePresence, m, motion, useMotionValue, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const mockValues = {
   cardNumber: "0000 0000 0000 0000",
@@ -15,14 +15,17 @@ const mockValues = {
 export default function Header() {
   const { isConfirmed, cardNumber, cardholderName, cvc, expiryMonth, expiryYear } =
     useCardContext();
+
+  // State to determine if the screen is wide enough
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 768);
+
   // Motion values for mouse position
-  const x: MotionValue<number> = useMotionValue(0);
-  const y: MotionValue<number> = useMotionValue(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
   // Perspective transformations
   const rotateY = useTransform(x, [-1, 1], [-20, 20]);
   const rotateX = useTransform(y, [-1, 1], [20, -20]);
-  // Transformations for rotation and perspective
 
   // Event handler for mouse movement
   const handleMouseMove = (event: MouseEvent) => {
@@ -41,11 +44,27 @@ export default function Header() {
   };
 
   useEffect(() => {
-    document.addEventListener("mousemove", handleMouseMove);
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth > 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Check screen size on mount
+
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isWideScreen) {
+      document.addEventListener("mousemove", handleMouseMove);
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+      };
     }
-  }, [])
+  }, [isWideScreen]);
+
   return (
     <header className="relative sm:-ml-4 sm:h-[558px] sm:py-4">
       <section
@@ -68,8 +87,29 @@ export default function Header() {
             }
           </div>
           <div className="mt-3 flex sm:mt-6 sm:text-[15px] justify-between text-[10px] text-ic-white">
-            <div className="uppercase tracking-[0.075em] sm:tracking-[0.085em]">
-              {cardholderName ? cardholderName : mockValues.cardholderName}
+            <div className="uppercase tracking-[0.075em] sm:tracking-[0.085em] text-left overflow-hidden">
+              <AnimatePresence>
+                {cardholderName ?
+                  <motion.span
+                    className="inline-block w-full"
+                    key="name"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { delay: 0.5 } }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {cardholderName}
+                  </motion.span> :
+                  <motion.span
+                    className="inline-block w-full"
+                    key="mock-name"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { delay: 0.5 } }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {mockValues.cardholderName}
+                  </motion.span>
+                }
+              </AnimatePresence>
             </div>
             <div className="tabular-nums tracking-[0.075em]">
               {expiryMonth ? expiryMonth : mockValues.expiryMonth}/
@@ -81,3 +121,4 @@ export default function Header() {
     </header>
   );
 }
+

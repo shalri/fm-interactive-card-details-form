@@ -5,7 +5,7 @@ import { validators } from "@/lib/validators";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useFormValidation, Errors } from "@/hooks/useFormValidation";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "@/animations/ErrorMessage";
 
 
 export default function CardDetailsForm() {
