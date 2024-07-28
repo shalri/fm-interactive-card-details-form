@@ -90,7 +90,7 @@ export default function CardDetailsForm() {
                 errors.cardholderName && "border-red-500",
               )}
             />
-            <ErrorMessage error={errors.cardholderName} key="cardholderName-error" />
+            <ErrorMessage error={errors.cardholderName} key="cardholderName-error" className="text-red-500" />
           </div>
           <div className="flex flex-col">
             <label htmlFor="cardNumber">Card Number</label>
@@ -106,7 +106,7 @@ export default function CardDetailsForm() {
                 errors.cardNumber ? "border-red-500" : "border-ic-light-grayish-violet",
               )}
             />
-            <ErrorMessage error={errors.cardNumber} key="cardNumber-error" />
+            <ErrorMessage error={errors.cardNumber} key="cardNumber-error" className="text-red-500" />
           </div>
           <div className="grid grid-cols-4 gap-x-3 sm:pb-[18px]">
             <div className="col-span-2">
@@ -133,14 +133,14 @@ export default function CardDetailsForm() {
                   onKeyPress={numericInput}
                   className={cn(
                     "col-span-1 w-full duration-400 form-input rounded border border-ic-light-grayish-violet px-4 py-[9px] text-[18px] text-ic-very-dark-violet transition-all placeholder:text-ic-light-grayish-violet focus:ring-ic-very-dark-violet",
-                    errors.expiryYear && "border-red-500",
+                    errors.expiryYear && "border-red-500 ",
                   )}
                   value={cardDetails.expiryYear}
                   onChange={(e) => handleChange("expiryYear", e.target.value)}
                 />
               </div>
             </div>
-            <ErrorMessage error={errors.expiryMonth || errors.expiryYear} key="expiry-error" className="col-span-2 col-start-1 row-start-2" />
+            <ErrorMessage error={errors.expiryMonth || errors.expiryYear} key="expiry-error" className="col-span-2 col-start-1 row-start-2 text-red-500" />
             <div className="col-span-2">
               <label htmlFor="cvc" className="block">
                 CVC
@@ -159,7 +159,7 @@ export default function CardDetailsForm() {
                 )}
               />
             </div>
-            <ErrorMessage key="cvc-error" error={errors.cvc} className="col-span-2 col-start-3 row-start-2" />
+            <ErrorMessage key="cvc-error" error={errors.cvc} className="col-span-2 col-start-3 row-start-2 text-red-500" />
           </div>
           <motion.button
             key={hasErrors ? "error" + errorCount : "no-error"}
